@@ -1,6 +1,7 @@
 package com.stl.sticktap.leagues;
 
 import com.stl.sticktap.teams.ITeam;
+import com.stl.sticktap.teams.Team;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,7 +12,6 @@ public class League implements ILeague {
     Collection<ITeam> teams;
 
     public League() {
-        throw new UnsupportedOperationException();
     }
 
     public League(int leagueReputation, Collection<ITeam> teams) {
@@ -29,6 +29,7 @@ public class League implements ILeague {
         return teams;
     }
 
+
     public static class TestLeague extends League {
 
         public TestLeague() {
@@ -39,6 +40,10 @@ public class League implements ILeague {
         public Collection<ITeam> generateRandomTeams(int numTeams) {
 
             Collection teams = new HashSet<>();
+
+            for (int i = 0; i < numTeams; i++) {
+                teams.add(new Team.RandomTeam());
+            }
 
             return teams;
         }
